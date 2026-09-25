@@ -5,6 +5,8 @@ RUN apk update && apk add --no-cache curl unzip nginx
 RUN mkdir -m 777 /xray
 RUN mkdir -p /run/nginx
 
+ENV GOMAXPROCS=1
+
 RUN ARCH=$(uname -m); \
     if [ "$ARCH" = "x86_64" ]; then ARCH="64"; \
     elif [ "$ARCH" = "aarch64" ]; then ARCH="arm64-v8a"; \
